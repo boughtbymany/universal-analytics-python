@@ -10,7 +10,7 @@
 ###############################################################################
 
 import unittest
-import urllib
+import urllib.request, urllib.parse, urllib.error
 
 from UniversalAnalytics import Tracker
 from UniversalAnalytics import HTTPLog
@@ -33,7 +33,7 @@ class UAMPythonTestCase(unittest.TestCase):
 
     @classmethod
     def url_quote(cls, value, safe_chars = ''):
-        return urllib.quote(value, safe_chars)
+        return urllib.parse.quote(value, safe_chars)
 
 
     @property
@@ -83,7 +83,7 @@ class UAMPythonTestCase(unittest.TestCase):
 
         # Send unicode data:
         # As unicode
-        self.tracker.send('event', u'câtēgøry', u'åctîõn', u'låbęl', u'válüē')
+        self.tracker.send('event', 'câtēgøry', 'åctîõn', 'låbęl', 'válüē')
         # As str
         self.tracker.send('event', 'câtēgøry', 'åctîõn', 'låbęl', 'válüē')
         

@@ -1,14 +1,17 @@
 from setuptools import setup
 import sys
+import os.path
 
-VERSION=open('commit-version').read().strip()
-print >>sys.stderr, "Preparing version {0}\n".format(VERSION or "NOTFOUND")
+VERSION = '0.1'
 
+if os.path.exists('commit-version'):
+    VERSION = open('commit-version').read().strip()
+    print("Preparing version {0}\n".format(VERSION or "NOTFOUND"), file=sys.stderr)
 
 try:
-    long_description=open('DESCRIPTION.rst', 'rt').read()
+    long_description = open('DESCRIPTION.rst', 'rt').read()
 except Exception:
-    long_description="Universal Analytics in Python; an implementation of Google's Universal Analytics Measurement Protocol"
+    long_description = "Universal Analytics in Python; an implementation of Google's Universal Analytics Measurement Protocol"
 
 
 
